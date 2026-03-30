@@ -1,0 +1,14 @@
+/data/*.sqlite
+/data/*.db
+/data/config.php
+/data/logs/*
+!/data/logs/.keep
+/data/sessions/*
+!/data/sessions/.keep
+/data/uploads/*
+!/data/uploads/.keep
+/vendor/
+/node_modules/
+.DS_Store
+/.idea/
+/.vscode/
