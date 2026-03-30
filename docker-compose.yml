@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: mediafeedback_app
+    ports:
+      - "8080:80"
+    volumes:
+      # Data Directory must be mapped to ensure SQLite DB, Config, and Sessions persist across rebuilds!
+      - ./data:/var/www/html/data
+      # (Optional) For development, map the entire project directory:
+      # - .:/var/www/html
+    environment:
+      # If running behind a reverse proxy or in a subfolder, define it here (e.g. /feedback)
+      - BASE_URL_OVERRIDE=
+    restart: unless-stopped

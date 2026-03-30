@@ -23,22 +23,25 @@
 - **Frontend:** Vanilla JS & reines CSS (Keine Node-Build-Schritte nötig, keine überladenen Frontend-Frameworks wie React/Vue)
 - **Medien-Verarbeitung:** Nativer HTML5 `MediaRecorder` API-Standard.
 
-## 🚀 Installation
+## 🚀 Installation & Deployment
 
-1. **Repository klonen:**
+Das System ist extrem flexibel und kann auf zwei Arten installiert werden:
+
+### Variante A: Klassisches Hosting (z.B. Webspace)
+mediaFeedback benötigt lediglich PHP 8+ und SQLite.
+1. **Verzeichnis hochladen:** Kopiere alle Dateien auf deinen Server.
+2. **Unterordner / Subdomains:** Das System unterstützt "Zero-Configuration"! Egal ob du es unter `domain.de` oder `domain.de/irgendein/unterordner/mfeedback` installierst – die Applikation erkennt den Pfad vollautomatisch und routet sich selbst, es sind **keine manuellen Pfad-Anpassungen** in Dateien nötig!
+3. **Schreibrechte:** Stelle sicher, dass der Ordner `data/` durch den Webserver (z.B. `www-data`) beschreibbar ist. Hier werden später Uploads und die SQLite-Datenbank generiert.
+4. **URL Aufrufen:** Öffne die URL einfach im Browser. Fertig!
+
+### Variante B: Docker (Empfohlen)
+Dank des mitgelieferten `Dockerfile` und `docker-compose.yml` ist die Software in einer Minute startklar:
+1. **Repository klonen** und in den Ordner wechseln.
+2. **Container starten:**
    ```bash
-   git clone https://github.com/suebi76/mediaFeedback.git
-   cd mediaFeedback
+   docker-compose up -d
    ```
-2. **Datenbank initialisieren:**
-   Stelle sicher, dass der Ordner `data/` durch deinen Webserver beschreibbar ist. Das System generiert die SQLite-Datenbank beim ersten Start vollautomatisch.
-3. **Umgebung konfigurieren:**
-   Kopiere die Datei `data/config.example.php` zu `data/config.php` und passe die Basis-URL sowie die Security-Salts an.
-4. **Applikation starten:**
-   Leite deinen Apache/Nginx-Server auf das Hauptverzeichnis weiter, oder starte den integrierten Server lokal:
-   ```bash
-   php -S localhost:8080
-   ```
+3. **Weboberfläche aufrufen:** Die App ist nun sicher unter `http://localhost:8080/index.php` erreichbar. (Der `/data/` Ordner wird dabei automatisch als persistentes lokales Volume gemappt, sodass keine Daten verloren gehen).
 
 ## 🔐 Privacy by Design
 
