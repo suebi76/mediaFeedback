@@ -1,53 +1,53 @@
 <div align="center">
   <h1>mediaFeedback</h1>
-  <p><strong>The Hyper-Minimalist, Block-Based Feedback Engine.</strong></p>
+  <p><strong>Die hyper-minimalistische, baustein-basierte Feedback-Engine.</strong></p>
 </div>
 
 <br>
 
-**mediaFeedback** is a privacy-first, zero-distraction feedback platform engineered for creators, educators, and teams who value absolute focus. Built with a modern block-based architecture (inspired by Notion), it strips away the noise of traditional survey tools to deliver a premium, fluid experience for both creators and participants.
+**mediaFeedback** ist eine datenschutzfreundliche, ablenkungsfreie Feedback-Plattform, entwickelt für Creator, Pädagogen und Teams, die absoluten Fokus schätzen. Aufgebaut auf einer modernen Baustein-Architektur (inspiriert von Notion), blendet sie den Lärm traditioneller Umfrage-Tools aus und liefert ein immersives Premium-Erlebnis.
 
-## ✨ Key Features
+## ✨ Kernfunktionen
 
-- **Zen Mode Interface:** A meticulously crafted, single-column layout that guarantees 100% participant focus. No sidebars, no marketing fluff, no annoying progress walls—just pure content.
-- **Block-Based Architecture:** Everything is a block. From standard Single/Multiple Choice questions to advanced Interactive Ratings and Media blocks. The core scales infinitely: the internal `ActivityRegistry` auto-discovers and registers new block modules without touching the core schema.
-- **Native Inline Media Recording:** Participants can record Voice (Audio) and Video feedback directly within the browser natively, bypassing the need for clunky third-party plugins.
-- **Fluid Auto-Saving:** The editor and the public interface operate entirely asynchronously. Changes and responses are saved seamlessly in the background to prevent workflow interruptions.
-- **Absolute Privacy (DSGVO/GDPR Compliant):** mediaFeedback does exactly what you want it to—and nothing more. It logs **zero** IP addresses, **zero** user-agent tracking, and stores everything in a local embedded SQLite database. Your data never leaves your server.
-- **Real-Time Analytics Dashboard:** An integrated, ultra-fast analytics engine providing instant visual insights into participant responses, answer distributions, and media uploads.
+- **Zen-Modus Interface:** Ein extrem sauberes, einspaltiges Layout, das 100% Fokus der Teilnehmer garantiert. Keine Sidebars, kein störendes Marketing, keine nervigen Fortschritts-Hürden – einfach nur der reine Inhalt.
+- **Baustein-Architektur:** Alles ist ein Baustein. Von einfachen Single/Multiple-Choice Fragen über interaktive Sterne-Bewertungen bis hin zu Medien-Blöcken. Das System ist unendlich skalierbar: Die interne `ActivityRegistry` entdeckt und registriert neue Bausteine vollautomatisch.
+- **Natives Audio- & Video-Recording:** Teilnehmer können Sprach- (Audio) und Videofeedbacks direkt nativ im Browser aufzeichnen, ganz ohne umständliche Drittanbieter-Plugins.
+- **Fließendes Auto-Saving:** Der Editor und die öffentliche Feedback-Ansicht arbeiten komplett asynchron. Alle Änderungen und Antworten werden nahtlos im Hintergrund gespeichert, um den Workflow niemals zu unterbrechen.
+- **Absoluter Datenschutz (100% DSGVO-konform):** mediaFeedback macht genau das, was du erwartest – und nicht mehr. Es speichert **null** IP-Adressen, **null** Browser- oder Gerätedaten (User-Agent) und hält alle Informationen lokal in einer eingebetteten SQLite-Datenbank. Deine Daten verlassen niemals deinen Server.
+- **Echtzeit-Analyse-Dashboard:** Ein integriertes, ultra-schnelles Analytics-Dashboard liefert direkte, visuelle Erkenntnisse über Teilnehmerantworten und Medien-Uploads.
 
-## 🛠️ Tech Stack & Architecture
+## 🛠️ Tech Stack & Architektur
 
-- **Backend:** PHP 8+ (Strictly Typed, OOP)
-- **Database:** SQLite (Zero-configuration, hyper-fast local embedded storage)
-- **Frontend:** Vanilla JS & CSS (Zero modern build steps required, no heavy frontend frameworks like React/Vue slowing down the render pipeline)
-- **Media Engine:** Native HTML5 `MediaRecorder` API standard.
+- **Backend:** PHP 8+ (Streng typisiert, OOP)
+- **Datenbank:** SQLite (Zero-Configuration, lokal eingebetteter Storage mit maximaler Performance)
+- **Frontend:** Vanilla JS & reines CSS (Keine Node-Build-Schritte nötig, keine überladenen Frontend-Frameworks wie React/Vue)
+- **Medien-Verarbeitung:** Nativer HTML5 `MediaRecorder` API-Standard.
 
 ## 🚀 Installation
 
-1. **Clone the repository:**
+1. **Repository klonen:**
    ```bash
    git clone https://github.com/suebi76/mediaFeedback.git
    cd mediaFeedback
    ```
-2. **Setup the Database:**
-   Ensure the `data/` directory is writable by your web server. The system will automatically provision the SQLite database on first run.
-3. **Configure Environment:**
-   Copy the `data/config.example.php` to `data/config.php` and update the base URL and security salts.
-4. **Serve Application:**
-   Point your Apache/Nginx web server to the root directory, or run locally:
+2. **Datenbank initialisieren:**
+   Stelle sicher, dass der Ordner `data/` durch deinen Webserver beschreibbar ist. Das System generiert die SQLite-Datenbank beim ersten Start vollautomatisch.
+3. **Umgebung konfigurieren:**
+   Kopiere die Datei `data/config.example.php` zu `data/config.php` und passe die Basis-URL sowie die Security-Salts an.
+4. **Applikation starten:**
+   Leite deinen Apache/Nginx-Server auf das Hauptverzeichnis weiter, oder starte den integrierten Server lokal:
    ```bash
    php -S localhost:8080
    ```
 
 ## 🔐 Privacy by Design
 
-We strongly believe that feedback should be honest and safe. 
-Because `mediaFeedback` collects highly sensitive biometric data via Audio and Video recordings, the database schema physically lacks the columns to store tracking metrics (like IP-Addresses). It is built from the ground up to comply mathematically with the strict data minimization mandates of the EU DSGVO/GDPR.
+Wir sind der festen Überzeugung, dass echtes Feedback ehrlich und vor allem sicher sein muss. 
+Da `mediaFeedback` über Audio und Video hochsensible biometrische Daten sammelt, verzichtet die Datenbankstruktur physisch vollständig auf die Erfassung von verdeckten Tracking-Metriken (wie IP-Adressen). Das System wurde von Grund auf so designt, dass es den strengen Vorgaben zur Datenminimierung ("Privacy-by-Design") der europäischen DSGVO/GDPR hundertprozentig entspricht.
 
-## 🤝 Contributing
+## 🤝 Mitwirken
 
-This project is built around modular extensions. If you want to add a new question type, simply create a new `Activity` class extending `ActivityBase` inside `app/Activities/`. The application will instantly inject it into the editor UI and the rendering pipeline without any schema migrations.
+Dieses Projekt lebt von seiner modularen Erweiterbarkeit. Wenn du einen neuen Frage- oder Inhaltstyp hinzufügen möchtest, reicht es, eine neue `Activity`-Klasse im Ordner `app/Activities/` anzulegen, die von `ActivityBase` erbt. Das System liest die Struktur aus und integriert den Baustein ohne jede Datenbankmigration nahtlos in den Editor!
 
 ---
-*Architected for clarity. Designed for focus.*
+*Gebaut für Klarheit. Designt für Fokus.*
